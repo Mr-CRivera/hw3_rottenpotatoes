@@ -1,3 +1,10 @@
+Fork del ejercicio de ejemplo de BDD y TDD RottenPotatoes de Cristóbal Rivera
+
+- Ejemplo de escenarios de prueba TDD con Cucumber
+- Ejemplo de páginas HAML
+- Ejemplo de ejecución de test con Capybara
+
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
