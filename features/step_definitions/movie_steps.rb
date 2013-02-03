@@ -1,12 +1,18 @@
-# Add a declarative step here for populating the DB with movies.
+# Declaracion para comprobar la existencia de un grupo de peliculas como background
+# o si no crearlas
 
 Given /the following movies exist/ do |movies_table|
   movies_table.hashes.each do |movie|
     # each returned element will be a hash whose key is the table header.
     # you should arrange to add that movie to the database here.
-  end
-  flunk "Unimplemented"
-end
+    if not Movie.exists?(:title => movie[:title], :rating => movie[:rating], :release_date => movie[:release_date]) then
+      m = Movie.new(:title => movie[:title], :rating => movie[:rating], :release_date => movie[:release_date])
+      m.save!
+    end #if
+  end #each
+end #Given
+# ============================================
+
 
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same page
@@ -16,6 +22,7 @@ Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  page.body is the entire content of the page as a string.
   flunk "Unimplemented"
 end
+# ============================================
 
 # Make it easier to express checking or unchecking several boxes at once
 #  "When I uncheck the following ratings: PG, G, R"
@@ -25,4 +32,6 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   # HINT: use String#split to split up the rating_list, then
   #   iterate over the ratings and reuse the "When I check..." or
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
+  flunk "Unimplemented"
 end
+# ============================================
