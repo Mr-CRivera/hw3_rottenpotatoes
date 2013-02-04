@@ -4,6 +4,7 @@ Feature: display list of movies sorted by different criteria
   So that I can quickly browse movies based on my preferences
   I want to see movies sorted by title or release date
 
+# =================================================
 Background: movies have been added to database
   
   Given the following movies exist:
@@ -21,11 +22,37 @@ Background: movies have been added to database
 
   And I am on the RottenPotatoes home page
 
-Scenario: sort movies alphabetically
-  When I follow "Movie Title"
-  # your steps here
-
+# =================================================
 Scenario: sort movies in increasing order of release date
   When I follow "Release Date"
-  # your steps here
+  Then I should see movies ordered by release_date: 
+  | title                   | rating | release_date |
+  | 2001: A Space Odyssey   | G      | 1968-04-06   |
+  | Raiders of the Lost Ark | PG     | 1981-06-12   |
+  | The Terminator          | R      | 1984-10-26   |      
+  | When Harry Met Sally    | R      | 1989-07-21   |
+  | Aladdin                 | G      | 1992-11-25   |
+  | Chicken Run             | G      | 2000-06-21   |
+  | Chocolat                | PG-13  | 2001-01-05   |
+  | Amelie                  | R      | 2001-04-25   |
+  | The Incredibles         | PG     | 2004-11-05   |
+  | The Help                | PG-13  | 2011-08-10   |
 
+# =================================================
+Scenario: sort movies alphabetically
+  When I follow "Movie Title"
+  Then I should see movies ordered by title: 
+  | title                   | rating | release_date |
+  | 2001: A Space Odyssey   | G      | 1968-04-06   |
+  | Aladdin                 | G      | 1992-11-25   |
+  | Amelie                  | R      | 2001-04-25   |
+  | Chicken Run             | G      | 2000-06-21   |
+  | Chocolat                | PG-13  | 2001-01-05   |
+  | Raiders of the Lost Ark | PG     | 1981-06-12   |
+  | The Help                | PG-13  | 2011-08-10   |
+  | The Incredibles         | PG     | 2004-11-05   |
+  | The Terminator          | R      | 1984-10-26   |      
+  | When Harry Met Sally    | R      | 1989-07-21   |
+
+# =================================================
+# =================================================
